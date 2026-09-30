@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhruv Jain — Software Engineer</title>
+<meta name="description" content="Dhruv Jain — software engineer building and shipping real-world applications: AI agents, RAG systems, and full-stack products.">
+<meta property="og:title" content="Dhruv Jain — Software Engineer">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dhruvdj2004.github.io/">
+<meta property="og:description" content="I build and ship real-world applications — AI agents, RAG systems and full-stack products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f5bea'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='white' text-anchor='middle'>DJ</text></svg>">
+<style>
+:root{
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+  --bg:#fbfbfa; --surface:#ffffff; --surface-2:#f3f3f1; --text:#16171a; --muted:#5d6068;
+  --border:#e4e4e0; --accent:#2f5bea; --accent-soft:#e8eefe; --live:#15803d; --live-soft:#e3f5e9;
+  --warn:#a16207; --warn-soft:#fdf3dc; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0f12; --surface:#16181d; --surface-2:#1d2026; --text:#ecedef; --muted:#9a9ea8;
+    --border:#2a2d35; --accent:#7b9bff; --accent-soft:#1d2744; --live:#4ade80; --live-soft:#12301f;
+    --warn:#facc15; --warn-soft:#332a0b; --shadow:none; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0f12; --surface:#16181d; --surface-2:#1d2026; --text:#ecedef; --muted:#9a9ea8;
+  --border:#2a2d35; --accent:#7b9bff; --accent-soft:#1d2744; --live:#4ade80; --live-soft:#12301f;
+  --warn:#facc15; --warn-soft:#332a0b; --shadow:none; color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 32px}}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-size:19px}
+.logo{font-weight:700;letter-spacing:-.01em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{padding:6px 12px;border-radius:8px;color:var(--muted);font-size:15.5px;font-weight:500}
+.nav-links a:hover{color:var(--text);background:var(--surface-2)}
+@media (max-width:620px){.nav-links a.hide-sm{display:none}}
+.icon-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;display:grid;place-items:center;margin-left:6px}
+
+/* hero */
+.hero{padding-top:88px;padding-bottom:64px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:var(--live);background:var(--live-soft);padding:5px 12px;border-radius:999px;font-weight:600}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 50%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1,h2,h3,.logo,.stat b{font-family:var(--display);text-wrap:balance}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.08;letter-spacing:-.035em;font-weight:800;margin:24px 0 24px;max-width:860px}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:clamp(18px,2.1vw,21px);line-height:1.7;color:var(--muted);max-width:680px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;font-weight:600;font-size:16.5px;border:1px solid var(--border);background:var(--surface);transition:transform .15s,border-color .15s}
+.btn:focus-visible,.chip:focus-visible,.icon-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+:root[data-theme="dark"] .btn.primary{color:#0e0f12}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0e0f12}}
+.btn svg{width:18px;height:18px}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:64px}
+@media (min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--surface);padding:26px 24px}
+.stat b{display:block;font-size:34px;letter-spacing:-.02em;font-weight:800}
+.stat span{color:var(--muted);font-size:15.5px}
+
+/* sections */
+section{padding-block:96px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head h2{font-size:clamp(30px,4vw,42px);letter-spacing:-.025em;font-weight:800}
+.sec-head p{color:var(--muted);max-width:540px;font-size:17.5px}
+.kicker{font-size:14px;color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+
+/* filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.chip{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:8px 18px;border-radius:999px;font:500 15.5px var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+/* projects */
+.projects{display:grid;gap:28px}
+@media (min-width:960px){.projects{grid-template-columns:1fr 1fr}.card.featured{grid-column:1/-1}}
+.card[hidden]{display:none}
+.card{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:36px 34px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:22px;transition:border-color .2s}
+.card.flagship{border-color:color-mix(in srgb,var(--accent) 55%,var(--border));background:linear-gradient(180deg,var(--accent-soft),var(--surface) 55%)}
+.card.flagship .kicker{margin-bottom:8px}
+.inline-link{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.card:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+.card-top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.card h3{font-size:clamp(23px,2.6vw,27px);letter-spacing:-.015em;font-weight:700}
+.tagline{color:var(--muted);font-size:17px;margin-top:4px}
+.badge{flex-shrink:0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.badge.live{color:var(--live);background:var(--live-soft)}
+.badge.wip{color:var(--warn);background:var(--warn-soft)}
+.badge.auto{color:var(--accent);background:var(--accent-soft)}
+.card .problem{font-size:17px;line-height:1.75}
+.highlights{list-style:none;display:grid;gap:14px}
+.highlights li{position:relative;padding-left:24px;font-size:16px;line-height:1.65;color:var(--muted)}
+.highlights li::before{content:"";position:absolute;left:3px;top:10px;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.highlights b{color:var(--text);font-weight:600}
+@media (min-width:960px){.card.featured .highlights{grid-template-columns:1fr 1fr;column-gap:44px}}
+.metrics{display:flex;flex-wrap:wrap;gap:10px}
+.metric{font-size:14.5px;background:var(--surface-2);border-radius:8px;padding:7px 13px}
+.metric b{font-weight:700}
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:13.5px;border:1px solid var(--border);color:var(--muted);padding:5px 11px;border-radius:6px}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.links .btn{padding:11px 18px;font-size:15.5px}
+.note{font-size:14.5px;color:var(--muted);align-self:center}
+
+/* skills + principles */
+.grid-3{display:grid;gap:22px}
+@media (min-width:720px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:30px 28px}
+.box h4{font-size:19px;margin-bottom:12px}
+.box p{color:var(--muted);font-size:16.5px;line-height:1.7}
+.box .stack{margin-top:4px}
+.principle-num{font-size:13px;color:var(--accent);margin-bottom:8px}
+
+/* experience */
+.timeline{display:grid;gap:22px}
+.job{display:grid;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px 30px}
+@media (min-width:820px){.job{grid-template-columns:200px 1fr;gap:32px}}
+.job-meta{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:15px}
+.job-meta .mono{color:var(--accent);font-size:14px;font-weight:500}
+.job-body{display:flex;flex-direction:column;gap:18px;min-width:0}
+.job h3{font-size:clamp(21px,2.4vw,25px);letter-spacing:-.015em;font-weight:700}
+.job .at{color:var(--muted);font-weight:600}
+.job-link{color:var(--accent);font-weight:600;font-size:15.5px}
+.small{font-size:15px;color:var(--muted);margin-top:8px}
+.box .highlights{margin-top:4px}
+.profile-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.profile-links .btn{padding:9px 15px;font-size:15px}
+.email-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:24px}
+.email{font-size:clamp(16px,2.4vw,20px);color:var(--text);user-select:all;overflow-wrap:anywhere}
+.small-btn{padding:8px 14px;font-size:14.5px;cursor:pointer;color:var(--text)}
+/* contact */
+.contact{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:64px 28px;text-align:center}
+.contact h2{font-size:clamp(30px,4.5vw,46px);letter-spacing:-.03em;font-weight:800;margin-bottom:10px}
+.contact p{color:var(--muted);max-width:580px;margin:0 auto;font-size:18px}
+.contact .cta{justify-content:center}
+footer{padding-block:44px;color:var(--muted);font-size:15px;text-align:center}
+
+@media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">dhruv<span>.</span>jain</a>
+    <div class="nav-links">
+      <a href="#experience" class="hide-sm">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap">
+    <span class="eyebrow"><span class="dot"></span>Open to SDE / full-stack / AI engineer roles · Class of 2027</span>
+    <h1>I build <em>real-world applications</em> and ship them to production.</h1>
+    <p class="lead">Full-stack developer and computer science student at IET DAVV, Indore. As an SDE intern I launched <a class="inline-link" href="https://mycarat.in" target="_blank" rel="noopener">mycarat.in</a>, a live AI jewellery store. As an AI intern at CityMall I built an AI banner generator that cut design time from hours to minutes. I also build multi-agent AI systems, RAG pipelines and sandboxed code execution.</p>
+    <div class="cta" id="hero-cta"></div>
+
+    <div class="stats">
+      <div class="stat"><b>2</b><span>internships on live production systems</span></div>
+      <div class="stat"><b id="stat-live">—</b><span>live products shipped</span></div>
+      <div class="stat"><b>400+</b><span>DSA problems solved in C++</span></div>
+      <div class="stat"><b>95.8</b><span>JEE Mains percentile</span></div>
+    </div>
+  </header>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Experience</div>
+          <h2>Where I've shipped to real users</h2>
+        </div>
+        <p>Two internships, three months on live production systems.</p>
+      </div>
+      <div class="timeline">
+        <article class="job">
+          <div class="job-meta"><span class="mono">May 2026 – Jul 2026</span><span>Gurgaon, India</span></div>
+          <div class="job-body">
+            <h3>AI Intern <span class="at">· CityMall</span></h3>
+            <ul class="highlights">
+              <li>Developed an <b>AI banner generator</b> using 2 AI models (Gemini, Codex), <b>cutting design time from hours to minutes</b></li>
+              <li>Scaled the <b>YMAL recommendation feature</b> to more app screens with 2 teams, boosting GMV and engagement</li>
+              <li>Identified <b>bugs, crashes and security issues</b> in 2 production apps (Android, React Native)</li>
+            </ul>
+            <div class="stack"><span class="tag">Gemini</span><span class="tag">Codex</span><span class="tag">Recommendations</span><span class="tag">Android</span><span class="tag">React Native</span><span class="tag">QA &amp; security</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="job-meta"><span class="mono">Apr 2026 – May 2026</span><span>Remote</span></div>
+          <div class="job-body">
+            <h3>Software Development Engineer Intern <span class="at">· mycarat.in</span></h3>
+            <ul class="highlights">
+              <li>Launched <b>mycarat.in</b>, a live AI jewellery store with 2 AI features, including a <b>Gemini Virtual Try-On</b></li>
+              <li>Engineered a <b>100% automated Instagram bot</b> that posts AI product carousels via the Meta Graph API</li>
+              <li>Automated <b>gold and silver price updates every 24 hours</b> with a cron scraper, and set up <b>CI/CD for 3 workflows</b></li>
+            </ul>
+            <div class="stack"><span class="tag">Shopify</span><span class="tag">Gemini</span><span class="tag">Meta Graph API</span><span class="tag">Supabase</span><span class="tag">CI/CD</span></div>
+            <a class="job-link" href="#work">See the full project breakdown ↓</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Selected work</div>
+          <h2>Things I've built and shipped</h2>
+        </div>
+        <p>Each card covers the problem, the engineering decisions behind it, and links to try it live.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" data-f="ai" aria-pressed="false">AI / LLM</button>
+        <button class="chip" data-f="fullstack" aria-pressed="false">Full-stack</button>
+        <button class="chip" data-f="live" aria-pressed="false">Live now</button>
+      </div>
+      <div class="projects" id="projects"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Engineering approach</div>
+          <h2>How I build</h2>
+        </div>
+        <p>These patterns come up again and again in my projects.</p>
+      </div>
+      <div class="grid-3">
+        <div class="box reveal"><h4>Deterministic where it matters</h4><p>LLMs explain and extract; rules decide. In Scheme Finder, eligibility is checked by Python rules, not the model, so answers can't be hallucinated.</p></div>
+        <div class="box reveal"><h4>Cost-aware by design</h4><p>Cheap filters run before expensive models. JobHunt narrows about 2,000 postings to about 40 with zero LLM calls, so a daily run costs a few rupees.</p></div>
+        <div class="box reveal"><h4>Fail safe, not fail loud</h4><p>Provider fallback chains, validate-then-compile pipelines, and local data fallbacks mean a single outage doesn't break the product.</p></div>
+        <div class="box reveal"><h4>Secure by default</h4><p>Untrusted code runs in network-less Docker containers with CPU and memory caps. APIs get rate limits, body caps, JWT auth and hardened headers.</p></div>
+        <div class="box reveal"><h4>Measured, not guessed</h4><p>Offline test suites with no network or keys, plus retrieval evals (routing, top-1, top-3), so I know when a change makes things worse.</p></div>
+        <div class="box reveal"><h4>Automated end to end</h4><p>GitHub Actions for tests, nightly re-ingestion and scheduled agents, plus an AI pipeline that creates and posts My Carat's Instagram content. The work keeps running without me.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Toolbox</div>
+          <h2>Skills I use in production</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="box reveal"><h4>Languages</h4><div class="stack"><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">PHP</span><span class="tag">SQL</span></div></div>
+        <div class="box reveal"><h4>AI / LLM engineering</h4><div class="stack"><span class="tag">LangGraph</span><span class="tag">RAG</span><span class="tag">Qdrant</span><span class="tag">Multi-agent systems</span><span class="tag">Tool calling</span><span class="tag">Structured output (Pydantic)</span><span class="tag">Re-ranking</span><span class="tag">Gemini</span><span class="tag">Claude</span><span class="tag">Groq</span><span class="tag">Codex</span><span class="tag">Meta Graph API</span><span class="tag">Evals</span></div></div>
+        <div class="box reveal"><h4>Frontend</h4><div class="stack"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">SVG visualization</span><span class="tag">Streamlit</span><span class="tag">PDF.js</span><span class="tag">Shopify (Liquid)</span></div></div>
+        <div class="box reveal"><h4>Backend</h4><div class="stack"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">WebSockets</span><span class="tag">Kafka</span><span class="tag">JWT auth</span><span class="tag">Rate limiting</span><span class="tag">Cloudinary</span></div></div>
+        <div class="box reveal"><h4>Data</h4><div class="stack"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">SQLite</span><span class="tag">Supabase</span><span class="tag">Vector DBs</span></div></div>
+        <div class="box reveal"><h4>DevOps & CS fundamentals</h4><div class="stack"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitHub Actions</span><span class="tag">Postman</span><span class="tag">Vercel</span><span class="tag">Fly.io</span><span class="tag">Railway</span><span class="tag">Render</span><span class="tag">pytest</span><span class="tag">Cron jobs</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Education &amp; achievements</div>
+          <h2>Fundamentals behind the work</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="box">
+          <h4>B.E. Computer Science Engineering</h4>
+          <p>Institute of Engineering and Technology, DAVV, Indore</p>
+          <p class="mono small">Aug 2023 – Jun 2027 (expected) · CGPA 7.6/10</p>
+          <p class="small">Coursework: DSA, OOP, DBMS, Operating Systems, Computer Networks</p>
+        </div>
+        <div class="box">
+          <h4>Achievements</h4>
+          <ul class="highlights">
+            <li><b>400+ DSA problems</b> solved in C++ on LeetCode and GeeksforGeeks</li>
+            <li><b>95.8 percentile</b> in JEE Mains among ~12 lakh students</li>
+            <li>Launched <b>vizucode.site</b>, which reached <b>50+ users</b></li>
+            <li><b>3 months of industry experience</b> across 2 internships</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Coding profiles</h4>
+          <p>Where I practise problem solving.</p>
+          <div class="profile-links" id="profile-links"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <h2>Let's build something real.</h2>
+        <p>I'm looking for software engineering roles where I can own features end to end, from design to deployment. The fastest way to reach me is email.</p>
+        <div class="email-row"><span class="mono email" id="email-text"></span><button class="btn small-btn" id="copy-email" type="button">Copy email</button></div>
+        <p class="small">Based in Indore, India · open to relocation and remote</p>
+        <div class="cta" id="contact-cta"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Dhruv Jain</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT HERE — your details and project links.
+   Leave a field "" to hide that button automatically.
+   ============================================================ */
+const RESUME_URL = "";   // resume not published on the hosted page
+const PROFILE = {
+  name:     "Dhruv Jain",
+  github:   "https://github.com/Dhruvdj2004",
+  email:    "dhruvdj1971@gmail.com",
+  linkedin: "https://www.linkedin.com/in/dhruv-jain",
+  resume:   RESUME_URL,
+  leetcode: "https://leetcode.com/u/Dhruvdj2004",
+  gfg:      "https://www.geeksforgeeks.org/profile/dhruvdyr71",
+  neetcode: "https://github.com/Dhruvdj2004/neetcode-submissions",
+};
+
+// status: "live" | "wip" (not deployed yet) | "auto" (scheduled agent, no UI)
+// code: "" for private repos (the button is hidden)
+const PROJECTS = [
+  {
+    name: "My Carat",
+    eyebrow: "Flagship · SDE internship · live in production",
+    tagline: "Live AI jewellery store: mycarat.in",
+    featured: true, cats: ["ai", "fullstack"], status: "prod",
+    live: "https://mycarat.in",
+    liveLabel: "Visit mycarat.in",
+    code: "",
+    note: "production business · code private",
+    problem: "Buying diamond jewellery in India usually means opaque pricing and heavy retail markups. As an SDE intern I launched mycarat.in, a live store selling BIS-hallmarked, IGI-certified jewellery with transparent pricing, a choice of natural or lab-grown diamonds on every piece, and AI features that let shoppers try pieces on before they buy.",
+    highlights: [
+      "<b>Gemini Virtual Try-On</b>, one of <b>2 AI features</b> shipped on the live store",
+      "<b>100% automated Instagram bot</b> that generates AI product carousels and posts them through the <b>Meta Graph API</b>",
+      "<b>Automated gold and silver pricing</b>: a cron scraper refreshes metal rates <b>every 24 hours</b> and feeds the store's live price calculator",
+      "<b>CI/CD pipelines for 3 workflows</b>: build, deployment and scheduled jobs",
+      "<b>Lead-capture flows</b> (talk to an expert, boutique visit, jewellery exchange, custom design) with WhatsApp confirmations, backed by <b>Supabase</b>",
+      "<b>Site analytics</b> organized across acquisition, traffic and engagement",
+    ],
+    metrics: [["2", "AI features live"], ["24 h", "automated price refresh"], ["3", "CI/CD workflows"], ["100%", "automated Instagram posting"]],
+    stack: ["Shopify", "Liquid", "Node.js", "Gemini", "Meta Graph API", "Supabase", "Cron jobs", "CI/CD", "Fly.io", "WhatsApp"],
+  },
+  {
+    name: "Scheme Finder",
+    tagline: "Multi-agent RAG assistant for Indian government schemes",
+    featured: true, cats: ["ai"], status: "live",
+    live: "https://scheme-finder-uk4y8afjbtj3ae22ci57k5.streamlit.app/",
+    code: "",   // private repo
+    problem: "Millions of eligible Indians never claim scholarships, subsidies or startup funding because the rules are scattered and written in bureaucratic language. Users describe themselves in plain English or Hinglish, and the app finds what they qualify for, explains why, and lists the documents they need.",
+    highlights: [
+      "<b>LangGraph workflow</b> with profile, router, search and answer agents, plus a ReAct tool-calling agent for follow-ups",
+      "<b>Two-stage retrieval</b>: Qdrant vector search, then a cross-encoder re-ranker that cleanly separates relevant results from noise",
+      "<b>Eligibility decided by Python rules, not the LLM</b>, with three outcomes; missing info triggers human-in-the-loop <code>interrupt()</code>",
+      "<b>Query rewriting + multi-query</b>: \"mother cooks on wood fire\" becomes \"free LPG gas connection\"",
+      "<b>Nightly ingestion</b> from myscheme.gov.in: LLM extraction validated by Pydantic, with content-hash change detection so only changed pages re-embed",
+      "<b>Token streaming</b> with live progress, bilingual EN/HI UI, phone-first, with explicit anti-fraud trust notices",
+    ],
+    metrics: [["20-case", "retrieval eval"], ["3", "scheme categories"], ["EN + HI", "bilingual"]],
+    stack: ["Python", "LangGraph", "Gemini", "Qdrant", "Pydantic", "Cross-encoder", "Streamlit", "GitHub Actions", "pytest"],
+  },
+  {
+    name: "VizuCode",
+    tagline: "Interactive, step-by-step LeetCode visualizer",
+    cats: ["fullstack"], status: "live",
+    live: "https://vizucode.site",
+    code: "https://github.com/Dhruvdj2004/vizucode",
+    problem: "Reading an optimal solution doesn't make you understand it. VizuCode runs the algorithm on your own input and animates each step, synced line by line with C++ and Java code.",
+    highlights: [
+      "<b>158 working visualizers</b> across 16 categories, built from <b>10 reusable templates</b> (trees, graphs, DP grids, heaps, intervals…)",
+      "<b>Tag-synced code highlighting</b>: every trace step maps to C++ and Java lines, verified by a smoke test across all 158",
+      "<b>Express API + PostgreSQL</b> with JWT auth and progress tracking, sharing one source of truth with the frontend",
+      "<b>Hardened API</b>: per-IP rate limits, 16 kB body cap, security headers, no leaked stack traces",
+      "<b>Timed aptitude/OA mode</b> with smart question selection that favors past mistakes and weak topics",
+    ],
+    metrics: [["50+", "users"], ["158", "visualizers"], ["16", "categories"], ["2", "languages synced"]],
+    stack: ["TypeScript", "React", "Vite", "Express", "PostgreSQL", "JWT", "SVG"],
+  },
+  {
+    name: "AI Resume Editor",
+    tagline: "Upload a resume, edit it by chatting, export a clean LaTeX PDF",
+    cats: ["ai", "fullstack"], status: "live",
+    live: "https://resumeeditor-raml.onrender.com/",
+    code: "https://github.com/Dhruvdj2004/resumeeditor",
+    problem: "Tweaking a resume for every application is slow, and AI tools tend to wreck the formatting. This app converts any PDF/DOCX into LaTeX and lets an AI edit only the content. The layout is locked, and every edit is validated and compiled before it's saved.",
+    highlights: [
+      "<b>Guarded edit pipeline</b>: the LLM only sees the body, then a validator checks markers, forbidden commands and balanced braces before compiling",
+      "<b>Automatic provider fallback</b> across Groq, Cerebras, Gemini and OpenRouter, feeding errors back to the next model",
+      "<b>Sandboxed LaTeX compile</b> with Tectonic <code>--untrusted</code>, timeouts and temp dirs",
+      "<b>Version history + one-click revert</b> in SQLite, and a live PDF.js preview",
+      "<b>Dockerized</b> with LaTeX packages pre-baked, and a ready Render blueprint",
+    ],
+    metrics: [["4", "LLM providers"], ["Versioned", "edits + revert"]],
+    stack: ["Python", "FastAPI", "LaTeX / Tectonic", "SQLite", "Docker", "PDF.js", "Groq", "Gemini"],
+  },
+  {
+    name: "JobHunt Agent",
+    tagline: "AI job-search agent that emails a daily shortlist",
+    cats: ["ai"], status: "auto",
+    live: "",
+    code: "",   // private repo
+    problem: "Job boards bury good roles under thousands of irrelevant ones. This agent polls public ATS APIs every weekday morning, filters out about 99% for free, scores the rest against my resume with an LLM, drafts an application kit, and emails me a digest. It never auto-applies.",
+    highlights: [
+      "<b>Cost funnel</b>: 2,000 postings → 40 candidates → 5 in the inbox, with no LLM call until the regex/location/freshness gate passes",
+      "<b>Parsers for Greenhouse, Lever and Ashby</b>, handling real quirks (epoch-ms timestamps, split JDs, unlisted drafts)",
+      "<b>Swappable LLM layer</b> (Claude, Gemini, Groq, Ollama, OpenAI-compatible), with a cheap model for screening and a strong one for drafting",
+      "<b>Runs on GitHub Actions cron</b>; dedupe state lives in cache, so nothing personal enters git",
+    ],
+    metrics: [["55", "offline tests"], ["~99%", "noise filtered free"], ["5", "LLM backends"]],
+    stack: ["Python", "Claude", "Gemini", "Groq", "GitHub Actions", "SMTP", "pytest"],
+  },
+  {
+    name: "MeetCode",
+    tagline: "DSA coding platform with its own code-execution engine and AI tutor",
+    cats: ["ai", "fullstack"], status: "wip",
+    live: "",
+    code: "https://github.com/Dhruvdj2004/meetcode",
+    problem: "A LeetCode-style practice platform with 100+ problems. It compiles and runs user code on its own sandboxed engine instead of Judge0, and an AI tutor gives hints before answers.",
+    highlights: [
+      "<b>Sandboxed execution engine, no Judge0</b>: each submission runs in a throwaway Docker container with no network, 1 CPU, 256 MB and a 5 s timeout",
+      "<b>4 security layers</b>: JWT, refresh-token rotation, RBAC and bcrypt hashing",
+      "<b>Redis rate limiting and JWT blocklisting</b> protecting the login and submission APIs",
+      "<b>Admin panel</b> to manage 100+ problems and their test cases",
+      "<b>Groq AI chatbot</b> that knows the current problem and guides with hints instead of dumping solutions",
+      "<b>Cloudinary video walkthroughs</b> that explain each solution",
+    ],
+    metrics: [["100+", "problems"], ["4", "security layers"], ["Own", "execution engine"]],
+    stack: ["React", "Node.js", "Express", "MongoDB", "Redis", "Docker", "Kafka", "Cloudinary", "JWT", "Groq"],
+  },
+];
+
+/* ============================================================ */
+const ICON = {
+  live: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+  code: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+  in:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>',
+  doc:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>',
+};
+const BADGE = {
+  live: '<span class="badge live"><span class="dot"></span>Live</span>',
+  prod: '<span class="badge live"><span class="dot"></span>Live · in production</span>',
+  wip:  '<span class="badge wip">Deploying soon</span>',
+  auto: '<span class="badge auto">Runs daily · automated</span>',
+};
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const btn = (href, label, icon, cls = "") =>
+  href ? `<a class="btn ${cls}" href="${esc(href)}" ${href.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${ICON[icon]}${label}</a>` : "";
+
+function card(p) {
+  const links = [btn(p.live, p.liveLabel || "Live demo", "live", "primary"), btn(p.code, "Source code", "code")].join("");
+  const note = !p.code ? `<span class="note mono">${esc(p.note || "private repo · code on request")}</span>` : "";
+  return `
+  <article class="card reveal ${p.featured ? "featured" : ""} ${p.eyebrow ? "flagship" : ""}" data-cats="${p.cats.join(" ")} ${p.status}">
+    <div class="card-top">
+      <div>${p.eyebrow ? `<div class="kicker">${esc(p.eyebrow)}</div>` : ""}<h3>${esc(p.name)}</h3><p class="tagline">${esc(p.tagline)}</p></div>
+      ${BADGE[p.status]}
+    </div>
+    <p class="problem">${esc(p.problem)}</p>
+    <ul class="highlights">${p.highlights.map(h => `<li>${h}</li>`).join("")}</ul>
+    <div class="metrics">${p.metrics.map(([v, l]) => `<span class="metric"><b>${esc(v)}</b> ${esc(l)}</span>`).join("")}</div>
+    <div class="stack">${p.stack.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+    <div class="links">${links}${note}</div>
+  </article>`;
+}
+
+document.getElementById("projects").innerHTML = PROJECTS.map(card).join("");
+document.getElementById("stat-live").textContent = PROJECTS.filter(p => p.status === "live" || p.status === "prod").length;
+document.getElementById("email-text").textContent = PROFILE.email;
+document.getElementById("copy-email").addEventListener("click", e => {
+  const b = e.currentTarget;
+  const done = () => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy email"), 1600); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById("email-text")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "Selected, press Ctrl+C"; };
+  try { navigator.clipboard.writeText(PROFILE.email).then(done, fallback); } catch (_) { fallback(); }
+});
+document.getElementById("profile-links").innerHTML = [
+  btn(PROFILE.leetcode, "LeetCode", "live"),
+  btn(PROFILE.gfg, "GeeksforGeeks", "live"),
+  btn(PROFILE.neetcode, "NeetCode", "live"),
+].join("");
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+document.getElementById("hero-cta").innerHTML = [
+  `<a class="btn primary" href="#work">${ICON.arrow}See my work</a>`,
+  btn("https://mycarat.in", "Visit mycarat.in", "live"),
+  btn(PROFILE.github, "GitHub", "code"),
+  btn(PROFILE.linkedin, "LinkedIn", "in"),
+  btn(PROFILE.resume, "Resume", "doc"),
+].join("");
+document.getElementById("contact-cta").innerHTML = [
+  PROFILE.email ? btn("mailto:" + PROFILE.email, "Email me", "mail", "primary") : "",
+  btn(PROFILE.linkedin, "LinkedIn", "in"),
+  btn(PROFILE.github, "GitHub", "code"),
+  btn(PROFILE.resume, "Download resume", "doc"),
+].join("");
+
+// filters
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c));
+  const f = c.dataset.f;
+  document.querySelectorAll(".card").forEach(el => {
+    el.hidden = !(f === "all" || el.dataset.cats.split(" ").includes(f) || (f === "live" && el.dataset.cats.split(" ").includes("prod")));
+  });
+}));
+
+// theme
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (_) {}
+document.getElementById("theme").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (_) {}
+});
+
+</script>
+</body>
+</html>
